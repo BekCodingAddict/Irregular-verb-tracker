@@ -1,0 +1,33 @@
+{
+  "irregularVerbs": [
+    {
+      "id": "12345678",
+      "baseForm": "arise",
+      "pastSimple": "arose",
+      "pastParticile": "arisen",
+      "examples": [
+        {
+          "baseForm": []
+        },
+        {
+          "pastSimple": []
+        },
+        {
+          "pastParticiple": []
+        }
+      ]
+    },
+    {
+      "id": "de42",
+      "baseForm": "Build",
+      "pastSimple": "Built",
+      "pastParticiple": "Built"
+    },
+    {
+      "id": "ce59",
+      "baseForm": "Hi",
+      "pastSimple": "Hey",
+      "pastParticiple": "Hello"
+    }
+  ]
+}
