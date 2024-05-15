@@ -1,35 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import "./styles.css";
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
-
-  //   const onSubmit = async (event) => {
-  //     event.preventDefault();
-  //     const data = new FormData(event.target);
-  //     const newData = {
-  //       email: data.get("email"),
-  //       password: data.get("password"),
-  //     };
-  //     console.log(newData);
-
-  //     try {
-  //       const response = await axios.post("/api/users/login", newData);
-  //       if (response.data.success) {
-  //         message.success(response.data.message);
-  //         localStorage.setItem("token", response.data.data);
-  //         navigate("/");
-  //       } else {
-  //         message.error(response.data.message);
-  //       }
-  //     } catch (error) {
-  //       message.error(error.message);
-  //     }
-  //   };
+  const { login } = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    const data = new FormData(e.target);
+    const inputData = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    console.log(inputData);
+    login(inputData);
   };
 
   return (
@@ -62,7 +48,7 @@ function Login() {
               <button type="submit">Login</button>
               <div className="singUp-link">
                 <p>
-                  Don't have an account?
+                  Don &apos;t have an account?
                   <Link to="/register">Sign Up</Link>
                 </p>
               </div>

@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { useAuth } from "../context/AuthContext";
+import { useEffect, useState } from "react";
 
 function Register() {
-  const { createNewUser } = useAuth();
+  const { createNewUser, dispatch } = useAuth();
+  const [userDatas, setUserDatas] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
   //   const onSubmit = async (event) => {
   //     event.preventDefault();
   //     const data = new FormData(event.target);
@@ -27,11 +33,10 @@ function Register() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const inputData = new FormData(e.target);
-    const userData = {
-      userName: inputData.get("userName"),
-      email: inputData.get("email"),
-      password: inputData.get("password"),
+    const newUser = {
+      userName: userDatas.userName,
+      email: userDatas.email,
+      password: userDatas.password,
       irregularVerbs: [
         {
           baseForm: "",
@@ -47,9 +52,14 @@ function Register() {
         },
       ],
     };
-    console.log(userData);
-    createNewUser(userData);
+    console.log(newUser);
+    createNewUser(newUser);
   };
+
+  useEffect(() => {
+    dispatch({ type: "inputData/changed" });
+    console.log("input Data Changed");
+  }, [userDatas.userName, userDatas.email, userDatas.password, dispatch]);
 
   return (
     <div className="body">
@@ -67,15 +77,39 @@ function Register() {
             <form action="" onSubmit={onSubmit}>
               <h2>Sign Up</h2>
               <div className="input-group">
-                <input type="text" name="userName" required></input>
+                <input
+                  type="text"
+                  name="userName"
+                  value={userDatas.userName}
+                  onChange={(e) =>
+                    setUserDatas({ ...userDatas, userName: e.target.value })
+                  }
+                  required
+                ></input>
                 <label>Username</label>
               </div>
               <div className="input-group">
-                <input type="email" name="email" required></input>
+                <input
+                  type="email"
+                  name="email"
+                  value={userDatas.email}
+                  onChange={(e) =>
+                    setUserDatas({ ...userDatas, email: e.target.value })
+                  }
+                  required
+                ></input>
                 <label>Email</label>
               </div>
               <div className="input-group">
-                <input type="password" name="password" required></input>
+                <input
+                  type="password"
+                  name="password"
+                  value={userDatas.password}
+                  onChange={(e) =>
+                    setUserDatas({ ...userDatas, password: e.target.value })
+                  }
+                  required
+                ></input>
                 <label>Password</label>
               </div>
               <div className="remember">

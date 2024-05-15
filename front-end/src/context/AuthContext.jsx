@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 const initialState = {
-  user: null,
   isAuthenticated: false,
   isUserExist: false,
   error: "",
@@ -15,7 +14,16 @@ const reducer = (state, action) => {
     case "user/exist":
       return { ...state, isAuthenticated: false, isUserExist: true };
     case "error":
-      return { ...state, error: action.payload };
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case "inputData/changed":
+      return { ...state, isUserExist: false };
+    case "incorrect/data":
+      return { state, isAuthenticated: false, isUserExist: false };
+    case "logged/in":
+      return { ...state, isAuthenticated: true, isUserExist: false };
     default:
       throw new Error("Unknown action!");
   }
@@ -43,7 +51,14 @@ function AuthProvider({ children }) {
         }
       });
 
-      if (isUserExist === false) {
+      console.log(isUserExist);
+      if (isUserExist) {
+        dispatch({ type: "user/exist" });
+        return null;
+      }
+      console.log(isUserExist);
+
+      if (!isUserExist) {
         const resp = await fetch(`http://localhost:9000/users`, {
           method: "POST",
           body: JSON.stringify(newUser),
@@ -60,9 +75,40 @@ function AuthProvider({ children }) {
     }
   }
 
+  const login = async (user) => {
+    try {
+      const data = await fetch(`http://localhost:9000/users`);
+      const users = await data.json();
+      users.forEach((currUser) => {
+        if (
+          currUser.email !== user.email ||
+          currUser.password !== user.password
+        ) {
+          dispatch({ type: "incorrect/data" });
+          alert("Email or Password incorrect!");
+          return;
+        }
+      });
+
+      alert("User logged in successfully!");
+      dispatch({ type: "logged/in" });
+      navigate("/app");
+    } catch (error) {
+      dispatch({ type: "error" });
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, isAuthenticated, isUserExist, error, createNewUser }}
+      value={{
+        user,
+        isAuthenticated,
+        isUserExist,
+        error,
+        createNewUser,
+        dispatch,
+        login,
+      }}
     >
       {children}
     </AuthContext.Provider>

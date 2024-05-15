@@ -1,7 +1,7 @@
 import { useReducer } from "react";
 import PageNav from "../components/PageNav";
 import AddingNewVerb from "./AddingNewVerb";
-import styles from "./AppLayout.module.css";
+import styles from "../pages/AppLayout.module.css";
 
 const initialState = {
   addBtnisClicked: false,
