@@ -1,0 +1,174 @@
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+:root {
+  --red: #d01c28;
+  --gray: #5a5959;
+}
+
+/ nav {
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  gap: 24px;
+}
+
+nav ul li {
+  cursor: pointer;
+}
+
+.front {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  max-width: 1125px;
+  height: calc(97vh - 72px);
+}
+
+.front-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.front h1 {
+  font-weight: 800;
+  font-size: 85px;
+  line-height: 80px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.front p {
+  font-weight: 500;
+  color: var(--gray);
+  max-width: 400px;
+  font-size: 12px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.front-button {
+  display: flex;
+  gap: 40px;
+}
+
+.front-button button {
+  font-size: 18px;
+}
+
+.front-button button:hover {
+  font-size: 18.5px;
+}
+
+.primary-btn {
+  animation: fadeIn 2.1s ease-in-out;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--gray);
+  border: 1px solid var(--gray);
+  animation: fadeIn 2.1s ease-in-out;
+}
+
+.shopping p {
+  font-size: 14px;
+  margin-bottom: 8px;
+  animation: fadeIn 2.5s ease-in-out;
+}
+
+.brand-icons {
+  display: flex;
+  gap: 20px;
+}
+
+#flipkart-img,
+#amazon-img {
+  animation: fadeIn 2.6s ease-in-out;
+}
+
+.front-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.front-image img {
+  width: 503px;
+}
+
+/* Responsive CSS */
+@media screen and (max-width: 1366px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .front h1 {
+    font-size: 64px;
+    line-height: 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .front {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .front h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  .front p {
+    font-size: 14px;
+    max-width: none;
+  }
+
+  .front-image img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .front h1 {
+    font-size: 36px;
+    line-height: 50px;
+  }
+
+  .front-button button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+.logo {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  left: -50px;
+}

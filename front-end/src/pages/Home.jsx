@@ -1,35 +1,12 @@
-import { useReducer } from "react";
-import PageNav from "../components/PageNav";
-import AddingNewVerb from "./AddingNewVerb";
-import styles from "./Home.module.css";
-
-const initialState = {
-  addBtnisClicked: false,
-  irregularVerbs: {
-    baseForm: "",
-    pastSimple: "",
-    pastParticile: "",
-  },
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "AddBtnClicked":
-      return { ...state, addBtnisClicked: !state.addBtnisClicked };
-    case "newVerbSubmitted":
-      return { ...state };
-  }
-};
+import Content from "./Content";
+import Navigation from "./Navigation";
+import "./Home.css";
 
 function Home() {
-  const [{ addBtnisClicked, irregularVerbs }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
   return (
-    <div className={styles.wrapper}>
-      <PageNav dispatch={dispatch} />
-      {addBtnisClicked && <AddingNewVerb />}
+    <div>
+      <Navigation />
+      <Content />
     </div>
   );
 }
