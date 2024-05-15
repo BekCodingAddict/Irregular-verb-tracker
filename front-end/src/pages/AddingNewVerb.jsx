@@ -3,6 +3,7 @@ import styles from "./AddingNewVerb.module.css";
 
 function AddingNewVerb() {
   const existRef = useRef(false);
+
   const handeAddVerb = async (e) => {
     e.preventDefault();
     const data = new FormData(e.target);

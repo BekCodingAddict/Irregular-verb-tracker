@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { useAuth } from "../context/AuthContext";
 
 function Register() {
+  const { createNewUser } = useAuth();
   //   const onSubmit = async (event) => {
   //     event.preventDefault();
   //     const data = new FormData(event.target);
@@ -23,8 +25,30 @@ function Register() {
   //     }
   //   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const inputData = new FormData(e.target);
+    const userData = {
+      userName: inputData.get("userName"),
+      email: inputData.get("email"),
+      password: inputData.get("password"),
+      irregularVerbs: [
+        {
+          baseForm: "",
+          pastSimple: "",
+          pastParticile: "",
+          examples: [
+            {
+              baseForm: [],
+              pastSimple: [],
+              pastParticiple: [],
+            },
+          ],
+        },
+      ],
+    };
+    console.log(userData);
+    createNewUser(userData);
   };
 
   return (
@@ -43,7 +67,7 @@ function Register() {
             <form action="" onSubmit={onSubmit}>
               <h2>Sign Up</h2>
               <div className="input-group">
-                <input type="text" name="name" required></input>
+                <input type="text" name="userName" required></input>
                 <label>Username</label>
               </div>
               <div className="input-group">

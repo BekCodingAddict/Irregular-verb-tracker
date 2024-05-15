@@ -1,84 +1,50 @@
 {
   "users": [
     {
-      "id": "12345678",
+      "id": "510b",
       "userName": "Otabek",
-      "email": "otabek@example.com",
+      "email": "bek@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "da65",
+      "userName": "Otabek",
+      "email": "bekcodingaddict@gmail.com",
       "password": "12345678",
       "irregularVerbs": [
         {
-          "id": "12345678",
-          "baseForm": "arise",
-          "pastSimple": "arose",
-          "pastParticile": "arisen",
+          "baseForm": "",
+          "pastSimple": "",
+          "pastParticile": "",
           "examples": [
             {
-              "baseForm": []
-            },
-            {
-              "pastSimple": []
-            },
-            {
+              "baseForm": [],
+              "pastSimple": [],
               "pastParticiple": []
             }
           ]
-        },
-        {
-          "id": "de42",
-          "baseForm": "Build",
-          "pastSimple": "Built",
-          "pastParticiple": "Built"
-        },
-        {
-          "id": "ce59",
-          "baseForm": "Hi",
-          "pastSimple": "Hey",
-          "pastParticiple": "Hello"
-        },
-        {
-          "id": "cc14",
-          "baseForm": "forget",
-          "pastSimple": "forgot",
-          "pastParticiple": "forgotten"
-        }
-      ]
-    }
-  ],
-  "irregularVerbs": [
-    {
-      "id": "12345678",
-      "baseForm": "arise",
-      "pastSimple": "arose",
-      "pastParticile": "arisen",
-      "examples": [
-        {
-          "baseForm": []
-        },
-        {
-          "pastSimple": []
-        },
-        {
-          "pastParticiple": []
         }
       ]
     },
     {
-      "id": "de42",
-      "baseForm": "Build",
-      "pastSimple": "Built",
-      "pastParticiple": "Built"
-    },
-    {
-      "id": "ce59",
-      "baseForm": "Hi",
-      "pastSimple": "Hey",
-      "pastParticiple": "Hello"
-    },
-    {
-      "id": "cc14",
-      "baseForm": "forget",
-      "pastSimple": "forgot",
-      "pastParticiple": "forgotten"
+      "id": "45ea",
+      "userName": "Jaloli",
+      "email": "sasasa@sdsds.com",
+      "password": "12345",
+      "irregularVerbs": [
+        {
+          "baseForm": "",
+          "pastSimple": "",
+          "pastParticile": "",
+          "examples": [
+            {
+              "baseForm": [],
+              "pastSimple": [],
+              "pastParticiple": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }
