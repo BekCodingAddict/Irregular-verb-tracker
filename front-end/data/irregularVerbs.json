@@ -28,6 +28,12 @@
       "baseForm": "Hi",
       "pastSimple": "Hey",
       "pastParticiple": "Hello"
+    },
+    {
+      "id": "cc14",
+      "baseForm": "forget",
+      "pastSimple": "forgot",
+      "pastParticiple": "forgotten"
     }
   ]
 }
