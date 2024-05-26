@@ -1,21 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import "./styles.css";
-import { useAuth } from "../context/AuthContext";
+import axios from "axios";
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const inputData = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
-    console.log(inputData);
-    login(inputData);
+    try {
+      const data = new FormData(e.target);
+      const inputData = {
+        email: data.get("email"),
+        password: data.get("password"),
+      };
+      console.log(inputData);
+      const resp = await axios.post(
+        "http://localhost:7777/api/user/sign-in",
+        inputData
+      );
+      if (resp.data.success) {
+        alert(resp.data.message);
+        localStorage.setItem("token", resp.data.data);
+        navigate("/app");
+      } else {
+        alert(resp.data.message);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
