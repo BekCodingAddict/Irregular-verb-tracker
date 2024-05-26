@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 //sign-up
-router.post("sign-up", async (req, res) => {
+router.post("/sign-up", async (req, res) => {
   try {
     const existUser = await User.findOne({ email: req.body.email });
     if (existUser) {
@@ -14,7 +14,7 @@ router.post("sign-up", async (req, res) => {
         data: null,
       });
     }
-    const hashedPassword = bcrypt.hash(req.body.password, 15);
+    const hashedPassword = await bcrypt.hash(req.body.password, 15);
     req.body.password = hashedPassword;
     const newUser = new User(req.body);
     await newUser.save();
