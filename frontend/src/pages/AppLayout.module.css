@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+}
